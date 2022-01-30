@@ -16,7 +16,7 @@ const Container = styled.div`
 
     h2{
         margin: 0;
-        padding: 0.8em 15% 1em 15%;
+        padding: 0.8em 18% 1em 18%;
         line-height: 51px;
         font-size: 49px;
         font-style: normal;
@@ -30,6 +30,48 @@ const Container = styled.div`
         font-size: 19px;
         font-style: normal;
         font-weight: 100;
+    }
+
+    @media screen and (max-width: 695px) {
+
+        h2{
+            line-height: 25px;
+            padding: 0.8em 3% 2em 3%;
+            font-size: 30px;
+            font-weight: 500;
+        }
+        
+    }
+
+    @media screen and (max-width: 1200px) {
+
+        background-image: url(https://sellflux.org/wp-content/uploads/2021/12/Bg2.png);
+        height: 1050px;
+
+        h2{
+            line-height: 25px;
+            padding: 0.8em 18% 2em 18%;
+            font-size: 30px;
+            font-weight: 500;
+        }
+        
+    }
+
+    @media screen and (max-width: 420px) {
+
+        background-image: url(https://sellflux.org/wp-content/uploads/2021/12/Bg2.png);
+        height: 700px;
+
+        h2{
+            line-height: 25px;
+            padding: 0.8em 3% 3em 3%;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        p{
+            line-height: 25px;
+            font-size: 14px;
+        }
     }
 `;
 

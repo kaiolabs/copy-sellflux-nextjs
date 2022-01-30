@@ -8,7 +8,7 @@ const Box = styled.main`
 
     display: flex;
     justify-content: center;
-    background-color: #000717;
+    background: linear-gradient(150deg , #00000D, #000717);
     padding: 105px 0em 100px 0;
     font-family: "Roboto", Sans-serif;
     text-align: center;
@@ -42,6 +42,11 @@ const Box = styled.main`
         color: #d6d6d6;
     }
 
+    .largura{
+        width: 647px;
+        padding-bottom: 45px;
+    }
+
     .container{
         display: flex;
         justify-content: center;
@@ -63,6 +68,7 @@ const Box = styled.main`
         height: 320px;
         padding: 0px 10px 0px 10px;
         background-color: #131423;
+        position: relative;
     }
 
     .caixaDethales:hover, .caixaDethales2:hover{
@@ -85,9 +91,8 @@ const Box = styled.main`
     }
 
     .icons:hover{
-        width: 70px;
-        height: 70px;
-        transition: 0.4s;
+        transform: scale(0.9, 0.9);
+        transition: 0.5s;
     }
 
     .caixaSvg{
@@ -127,9 +132,22 @@ const Box = styled.main`
         color: white;
     }
 
-    .largura{
-        width: 647px;
-        padding-bottom: 45px;
+    @media screen and (max-width: 680px) {
+        .largura{
+            width: 447px;
+            padding-bottom: 45px;
+        }   
+    }
+
+    @media screen and (max-width: 420px) {
+        .largura{
+            width: 342px;
+            padding-bottom: 45px;
+        }   
+        h2{
+            font-size: 30px;
+            font-weight: 500;
+        }
     }
 
 `;
