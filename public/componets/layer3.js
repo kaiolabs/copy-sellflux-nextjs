@@ -17,6 +17,7 @@ const Container = styled.div`
     .caixaDeTexto{
         margin-left: 140px;
         max-width: 550px;
+        width: auto;
     }
 
     .img{
@@ -51,6 +52,7 @@ const Container = styled.div`
         font-style: normal;
         color: #d6d6d6;
     }
+    
 
     .alinhar{
         margin-top: 30px;
@@ -91,6 +93,7 @@ const Container = styled.div`
         .caixaDeTexto{
             max-width: 350px;
             margin-left: 0px;
+            
         }
     }
 
