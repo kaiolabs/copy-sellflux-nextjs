@@ -3,6 +3,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { BsChatLeftText } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import { GiSmartphone } from 'react-icons/gi';
+import { useEffect, useState } from "react";
 
 const Box = styled.main`
 
@@ -62,16 +63,7 @@ const Box = styled.main`
         background-color: #131423;
     }
 
-    .caixaDethales2{
-        margin: 8px;
-        width: 245px;
-        height: 320px;
-        padding: 0px 10px 0px 10px;
-        background-color: #131423;
-        position: relative;
-    }
-
-    .caixaDethales:hover, .caixaDethales2:hover{
+    .caixaDethales:hover{
         transition: 0.9s;
         background-color: #202259;
     }
@@ -85,7 +77,6 @@ const Box = styled.main`
         text-align: center;
         display: flex;
         justify-content: center;
-        margin: 0 auto;
         margin-top: 20px;
         margin-bottom: 8%;  
     }
@@ -102,6 +93,11 @@ const Box = styled.main`
         align-items: center;
         display: flex;
         justify-content: center;
+    }
+
+    svg{
+        font-size: 30px;
+        color: white;
     }
 
     .caixaTexto{
@@ -127,11 +123,6 @@ const Box = styled.main`
         color: white;
     }
 
-    svg{
-        font-size: 30px;
-        color: white;
-    }
-
     @media screen and (max-width: 680px) {
         .largura{
             width: 447px;
@@ -150,9 +141,54 @@ const Box = styled.main`
         }
     }
 
+    [data-anime]{
+        opacity: 0;
+        transform: translate3d(0, 300px, 0);
+    }
+
+    [data-anime="bottom"]{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        animation-timing-function: ease-out;
+        transition: 0.6s;
+    }
 `;
 
+
+export function Card({ icon, titulo, texto }) {
+
+    return (
+
+        <div className="caixaDethales">
+            <div className="caixaSvg">
+                <div className="icons">
+                    {icon}
+                </div>
+            </div>
+            <div className="caixaTexto">
+                <span>{titulo}</span>
+                <p>{texto}</p>
+            </div>
+        </div>
+    )
+}
+
+
 export default function Layer2() {
+
+    const [animat, setAnimat] = useState('')
+
+    useEffect(() => {
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            if(entries.some((entry) => entry.isIntersecting)){
+                setAnimat("bottom");
+            }
+        });
+        intersectionObserver.observe(document.querySelector('#test'))
+        return () => intersectionObserver.disconnect();
+    }, []);
+
+
     return (
         <Box>
             <main>
@@ -165,56 +201,13 @@ export default function Layer2() {
                         </div>
                     </div>
                 </div>
-                <div className="container">
+                <div className="container" id='test' data-anime = {animat}>
 
-                    <div className="caixaDethales">
-                        <div className="caixaSvg">
-                        <div className="icons">
-                            <FaWhatsapp />
-                        </div>
-                        </div>
-                        <div className="caixaTexto">
-                            <span>WhatsApp</span>
-                            <p>Gerencie tags, grupos e envie centenas de mensagens através de gatilhos totalmente personalizados dentro do seu funil, diretamente para o seu cliente.</p>
-                        </div>
-                    </div>
+                    <Card icon={<FaWhatsapp />} titulo={"WhatsApp"} texto={"Gerencie tags, grupos e envie centenas de mensagens através de gatilhos totalmente personalizados dentro do seu funil, diretamente para o seu cliente."} />
+                    <Card icon={<BsChatLeftText />} titulo={"SMS"} texto={"Configure respostas automáticas comuns e condicionais dentro do fluxo de automação utilizando SMS, ideal para atrair mais clientes para seu negócio."} />
+                    <Card icon={<AiOutlineMail />} titulo={"E-mail"} texto={"Faça disparos ilimitados de e-mails com automações beaseadas em ações do seu lead de maneira fácil e integrada com todas as funcionalidades do SellFlux."} />
+                    <Card icon={<GiSmartphone />} titulo={"Ligação"} texto={"Contando com a melhor tecnologia VOIP do mercado, potencialize ainda mais suas conversões e recuperações de clientes através de chamadas de voz."} />
 
-                    <div className="caixaDethales2">
-                        <div className="caixaSvg">
-                        <div className="icons">
-                            <BsChatLeftText />
-                        </div>
-                        </div>
-                        <div className="caixaTexto">
-                            <span>SMS</span>
-                            <p>Configure respostas automáticas comuns e condicionais dentro do fluxo de automação utilizando SMS, ideal para atrair mais clientes para seu negócio.</p>
-                        </div>
-                    </div>
-
-                    <div className="caixaDethales2">
-                        <div className="caixaSvg">
-                        <div className="icons">
-                            <AiOutlineMail />
-                        </div>
-                        </div>
-                        <div className="caixaTexto">
-                            <span>E-mail</span>
-                            <p>Faça disparos ilimitados de e-mails com automações beaseadas em ações do seu lead de maneira fácil e integrada com todas as funcionalidades do SellFlux.</p>
-                        </div>
-                    </div>
-
-                    <div className="caixaDethales">
-                        <div className="caixaSvg">
-                        <div className="icons">
-                            <GiSmartphone />
-                        </div>
-                        </div>
-                        <div className="caixaTexto">
-                            <span>Ligação</span>
-                            <p>Contando com a melhor tecnologia VOIP do mercado, potencialize ainda mais suas conversões e recuperações de clientes através de chamadas de voz.</p>
-                        </div>
-                    </div>
-                    
                 </div>
             </main>
         </Box>
