@@ -106,7 +106,7 @@ export default function Layer1(){
                 <p>A ferramenta mais completa de conversão de vendas <br/> e recuperação de clientes do mercado</p>
                 <SubimitButton text="Começar agora!"/>
 
-                <Image className='anime' src={mockup} alt="SellFlux picture" width={1000} height={570}  priority/>
+                <Image className='anime' src={mockup} alt="SellFlux picture" width={1000} height={570}/>
             </div>
         </Container>
     )
