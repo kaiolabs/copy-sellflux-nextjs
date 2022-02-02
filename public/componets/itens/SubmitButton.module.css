@@ -18,3 +18,24 @@
 .btn:hover{
     background-color: #0062FF;
 }
+
+.purpleButton{
+    background-color:  #562db6;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    padding:12px 25px 12px 25px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 14px;
+    margin-top: 7%;
+    margin-bottom: 2em;
+    transition: 0.2s;
+}
+
+.purpleButton:hover{
+    background-color: black;
+}
