@@ -120,7 +120,7 @@ export function Card({titulo, texto}) {
     )
 }
 
-export default function Layer() {
+export default function Layer5() {
     return (
         <Container>
             <section>

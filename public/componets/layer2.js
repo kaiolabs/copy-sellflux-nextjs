@@ -13,6 +13,7 @@ const Box = styled.main`
     padding: 105px 0em 100px 0;
     font-family: "Roboto", Sans-serif;
     text-align: center;
+    overflow: hidden;
 
     h2{
         margin-top: 27px;
@@ -143,7 +144,7 @@ const Box = styled.main`
 
     [data-anime]{
         opacity: 0;
-        transform: translate3d(0, 300px, 0);
+        transform: translate3d(0, 150px, 0);
     }
 
     [data-anime="bottom"]{
@@ -184,7 +185,7 @@ export default function Layer2() {
                 setAnimat("bottom");
             }
         });
-        intersectionObserver.observe(document.querySelector('#test'))
+        intersectionObserver.observe(document.querySelector('#layer1'))
         return () => intersectionObserver.disconnect();
     }, []);
 
@@ -201,13 +202,12 @@ export default function Layer2() {
                         </div>
                     </div>
                 </div>
-                <div className="container" id='test' data-anime = {animat}>
+                <div className="container" id='layer1' data-anime = {animat}>
 
                     <Card icon={<FaWhatsapp />} titulo={"WhatsApp"} texto={"Gerencie tags, grupos e envie centenas de mensagens através de gatilhos totalmente personalizados dentro do seu funil, diretamente para o seu cliente."} />
                     <Card icon={<BsChatLeftText />} titulo={"SMS"} texto={"Configure respostas automáticas comuns e condicionais dentro do fluxo de automação utilizando SMS, ideal para atrair mais clientes para seu negócio."} />
                     <Card icon={<AiOutlineMail />} titulo={"E-mail"} texto={"Faça disparos ilimitados de e-mails com automações beaseadas em ações do seu lead de maneira fácil e integrada com todas as funcionalidades do SellFlux."} />
                     <Card icon={<GiSmartphone />} titulo={"Ligação"} texto={"Contando com a melhor tecnologia VOIP do mercado, potencialize ainda mais suas conversões e recuperações de clientes através de chamadas de voz."} />
-
                 </div>
             </main>
         </Box>

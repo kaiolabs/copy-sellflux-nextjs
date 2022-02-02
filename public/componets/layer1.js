@@ -32,6 +32,16 @@ const Container = styled.div`
         font-weight: 100;
     }
 
+    @keyframes animate {
+        from {opacity: 0;}
+        to {opacity: 1;}  
+    }
+
+    .anime{
+        animation-name: animate;
+        animation-duration: 2s;
+    }
+
     @media screen and (max-width: 695px) {
 
         h2{
@@ -96,7 +106,7 @@ export default function Layer1(){
                 <p>A ferramenta mais completa de conversão de vendas <br/> e recuperação de clientes do mercado</p>
                 <SubimitButton text="Começar agora!"/>
 
-                <Image src={mockup} alt="SellFlux picture" width={1000} height={570} />
+                <Image className='anime' src={mockup} alt="SellFlux picture" width={1000} height={570} />
             </div>
         </Container>
     )

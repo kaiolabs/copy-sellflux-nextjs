@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import Image from "next/image";
 import SubimitButton from "./itens/SubmitButton";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
+
     padding: 90px 0px 70px 0px;
     background: linear-gradient(90deg , #02071E, #02071E);
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 
     .box{
         display: flex;
@@ -97,15 +100,44 @@ const Container = styled.div`
         }
     }
 
+    [data-image]{
+        opacity: 0;
+        transform: translate3d(850px, 0, 0);
+    }
+
+    [data-text]{
+        opacity: 0;
+        transform: translate3d(-850px, 0, 0);
+    }
+
+    [data-image = "start"], [data-text = "start"]{
+    opacity: 1;
+    transition: 1.5s;
+    animation-timing-function: ease;
+    transform: translate3d(0, 0, 0);
+   }
+
 `;
 
-
 export default function Layer4() {
+
+    const [animat, setAnimat] = useState('')
+
+    useEffect(() => {
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            if(entries.some((entry) => entry.isIntersecting)){
+                setAnimat("start");
+            }
+        });
+        intersectionObserver.observe(document.querySelector('#layer4'))
+        return () => intersectionObserver.disconnect();
+    }, []);
+
     return (
         <Container>
             <div>
-                <div className="box">
-                    <div className="caixaDeTexto">
+                <div className="box" id='layer4'>
+                    <div className="caixaDeTexto" data-text = {animat}>
                         <h3>Etiquetas integradas com o SellFlux</h3>
                         <span>O SellFlux</span>
                         <p>Uma das funcionalidades mais essências do WhatsApp Business na hora do atendimento, é a etiqueta. Pensando nisso, o SellFlux se torna uma ferramenta totalmente integrada, apenas com aplicação e remoção da etiquetas do seu contato, você consegue movimentar ou retirar seu lead do funil.</p>
@@ -113,7 +145,7 @@ export default function Layer4() {
                             <SubimitButton text="Começar agora!" />
                         </div>
                     </div>
-                    <div className="img">
+                    <div className="img" data-image = {animat}>
                         <Image src={'/img/etiqueta.png'} alt="SellFlux picture" width={540} height={533} />
                     </div>
                 </div>

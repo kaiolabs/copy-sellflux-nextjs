@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import Image from "next/image";
 import SubimitButton from "./itens/SubmitButton";
+import { useState, useEffect } from "react";
 
 const Container = styled.div`
     padding: 40px 0px 0px 0px;
     background: linear-gradient(220deg , #00131A, #000000);
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 
     .box{
         display: flex;
@@ -40,9 +42,9 @@ const Container = styled.div`
     h2{
         font-weight: 600;
         font-size: 31px;
-        line-height: 31px;
+        line-height: 30px;
         font-style: normal;
-        width: 360px;
+        width: 66%;
     }
 
     p{
@@ -97,18 +99,48 @@ const Container = styled.div`
         }
     }
 
+   [data-image]{
+    opacity: 0;
+    transform: translate3d(0, 650px, 0);
+   }
+   [data-text]{
+    opacity: 0;
+    transform: translate3d(780px, 0, 0);
+   }
+
+
+   [data-image = "start"], [data-text = "start"]{
+    opacity: 1;
+    transition: 1.5s;
+    animation-timing-function: ease;
+    transform: translate3d(0, 0, 0);
+   }
+
 `;
 
 
 export default function Layer3() {
+
+    const [animat, setAnimat] = useState('')
+
+    useEffect(() => {
+        const intersectionObserver = new IntersectionObserver((entries) => {
+            if(entries.some((entry) => entry.isIntersecting)){
+                setAnimat("start");
+            }
+        });
+        intersectionObserver.observe(document.querySelector('#layer3'))
+        return () => intersectionObserver.disconnect();
+    }, []);
+
     return (
         <Container>
             <div>
-                <div className="box">
-                    <div className="img">
+                <div className="box" id='layer3'>
+                    <div className="img" data-image = {animat}>
                         <Image src={'/img/processo.png'} alt="SellFlux picture" width={540} height={533} />
                     </div>
-                    <div className="caixaDeTexto">
+                    <div className="caixaDeTexto" data-text = {animat}>
                         <h4>Criador avançado</h4>
                         <h2>Automatize tudo e deixe as vendas explodirem</h2>
                         <p>Ok, você conhece o termo “sequências”, mas já imaginou ter uma sequência automática de Mensagens no WhatsApp, Ligação e SMS em um só lugar? Chega de utilizar 10 ferramentas para automatizar as vendas do seu produto. </p>
