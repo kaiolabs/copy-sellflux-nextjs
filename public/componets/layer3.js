@@ -138,7 +138,7 @@ export default function Layer3() {
             <div>
                 <div className="box" id='layer3'>
                     <div className="img" data-image = {animat}>
-                        <Image src={'/img/processo.webp'} alt="SellFlux picture" width={540} height={533} priority/>
+                        <Image src={'/img/processo.webp'} alt="SellFlux picture" width={540} height={533}/>
                     </div>
                     <div className="caixaDeTexto" data-text = {animat}>
                         <h4>Criador avançado</h4>

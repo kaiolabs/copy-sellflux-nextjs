@@ -146,7 +146,7 @@ export default function Layer4() {
                         </div>
                     </div>
                     <div className="img" data-image = {animat}>
-                        <Image src={'/img/etiqueta.webp'} alt="SellFlux picture" width={540} height={533} priority/>
+                        <Image src={'/img/etiqueta.webp'} alt="SellFlux picture" width={540} height={533}/>
                     </div>
                 </div>
             </div>
