@@ -15,7 +15,6 @@ const Container = styled.section`
         font-weight: 600;
         font-size: 17px;
         line-height: 17px;
-        color: #aaa2a2;
         margin-top: 150px;
         margin-bottom: 35px;
     }
@@ -53,6 +52,10 @@ const Container = styled.section`
         margin-left: 120px;
         max-width: 60%;
         text-align: start;
+    }
+
+    .caixaDeTexto p{
+        color: #aaa2a2;
     }
 
     .box h6{
