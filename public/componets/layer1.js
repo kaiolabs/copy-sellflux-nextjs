@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import mockup from '../img/mockup.png'
-import logo from '../img/Logo.png'
+import mockup from '../img/mockup.webp'
+import logo from '../img/Logo.webp'
 import SubimitButton from './itens/SubmitButton';
 import styled from 'styled-components'
 
 const Container = styled.div`
 
-    background-image: url(https://sellflux.org/wp-content/uploads/2021/12/Bg2.png);
+    background-image: url("./img/Bg2.webp");
     background-size: cover;
     height: 1150px;
     text-align: center;
@@ -55,8 +55,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 1200px) {
 
-        background-image: url(https://sellflux.org/wp-content/uploads/2021/12/Bg2.png);
-        height: 1050px;
+        height: 850px;
 
         h2{
             line-height: 25px;
@@ -69,8 +68,7 @@ const Container = styled.div`
 
     @media screen and (max-width: 420px) {
 
-        background-image: url(https://sellflux.org/wp-content/uploads/2021/12/Bg2.png);
-        height: 700px;
+        height: 650px;
 
         h2{
             line-height: 25px;
